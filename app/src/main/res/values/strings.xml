@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">StudentApp</string>
+    <string name="title_activity_student_home">StudentHomeActivity</string>
+</resources>
