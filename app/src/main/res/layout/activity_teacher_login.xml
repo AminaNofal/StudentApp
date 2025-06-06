@@ -2,39 +2,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="24dp"
-    android:gravity="center">
+    android:background="#f5f5f5">
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:hint="Username" />
+        android:hint="Teacher Username"
+        android:inputType="text"
+        android:padding="12dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp" />
+        android:padding="12dp"
+        android:background="#ffffff"
+        android:elevation="2dp"
+        android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:layout_marginTop="24dp" />
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <Button
-        android:id="@+id/btnTeacherLogin"
+        android:id="@+id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login as Teacher"
-        android:layout_marginTop="16dp"
-        android:textColor="#ffffff"
-        android:textAllCaps="false" />
-
-
+        android:text="Back"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

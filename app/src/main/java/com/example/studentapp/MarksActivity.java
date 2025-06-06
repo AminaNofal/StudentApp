@@ -27,7 +27,7 @@ public class MarksActivity extends AppCompatActivity {
     List<Mark> markList;
     MarkAdapter adapter;
 
-    String URL = "http://10.0.2.2/student_api/get_marks.php"; // رابط PHP داخل XAMPP
+    String URL = "http://10.0.2.2/StudentApp/get_marks.php"; // رابط PHP داخل XAMPP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

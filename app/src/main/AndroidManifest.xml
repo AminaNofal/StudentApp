@@ -21,6 +21,15 @@
         <activity android:name=".ScheduleActivity" />
 
         <activity android:name=".UploadAssignmentActivity" />
+        <activity android:name=".TeacherLoginActivity" />
+        <activity android:name=".TeacherHomeActivity" />
+        <activity android:name=".TeacherScheduleActivity" />
+        <activity android:name=".TeacherMarksActivity" />
+        <activity android:name=".TeacherAssignmentActivity" />
+
+
+
+
 
         <activity
             android:name=".StudentHomeActivity"

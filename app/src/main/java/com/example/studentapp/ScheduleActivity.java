@@ -25,7 +25,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
     RecyclerView recyclerSchedule;
     List<Schedule> scheduleList;
-    String URL = "http://10.0.2.2/student_api/get_schedule.php"; // تأكد من المسار
+    String URL = "http://10.0.2.2/StudentApp/get_schedule.php"; // تأكد من المسار
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

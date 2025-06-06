@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="#f5f5f5">
+
+    <Spinner
+        android:id="@+id/spinnerSubjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/etStudentId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student ID"
+        android:inputType="number"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/etMark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mark"
+        android:inputType="number"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnSubmitMark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit Mark"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF" />
+
+    <!-- زر الرجوع في الأسفل -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Home"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#9E9E9E"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false" />
+
+</LinearLayout>

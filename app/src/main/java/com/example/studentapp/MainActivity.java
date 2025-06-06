@@ -25,16 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
     Button btnLogin;
-    String URL = "http://10.0.2.2/student_api/login.php"; // لـ emulator فقط
-
+    String URL = "http://10.0.2.2/StudentApp/login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin   = findViewById(R.id.btnLogin);
+        Button btnTeacherLogin = findViewById(R.id.btnTeacherLogin);
+
+        btnTeacherLogin.setOnClickListener(v -> {
+            startActivity(new Intent(this, TeacherLoginActivity.class)); // ✅ الصح
+        });
+
+
+
 
         btnLogin.setOnClickListener(view -> {
             String username = etUsername.getText().toString().trim();
@@ -88,6 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(stringRequest);
-        });
-    }
+  });
+}
 }

@@ -9,4 +9,9 @@ public class Schedule {
         this.time = time;
         this.location = location;
     }
+
+    public String getSubjectName() { return subjectName; }
+    public String getDay() { return day; }
+    public String getTime() { return time; }
+    public String getLocation() { return location; }
 }
