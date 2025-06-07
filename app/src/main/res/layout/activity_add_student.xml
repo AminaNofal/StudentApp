@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/etStudentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student Name"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/etStudentID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etStudentName"
+        android:layout_marginTop="16dp"
+        android:hint="Student ID"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/etStudentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etStudentID"
+        android:layout_marginTop="16dp"
+        android:hint="Student Email"
+        android:inputType="textEmailAddress"/>
+
+    <Spinner
+        android:id="@+id/spMajor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etStudentEmail"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnAddStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spMajor"
+        android:layout_marginTop="24dp"
+        android:text="Add Student"
+        android:backgroundTint="#6A1B9A"
+        android:textColor="#FFF"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAddStudent"
+        android:layout_marginTop="16dp"
+        android:text="Back"
+        android:backgroundTint="#6A1B9A"
+        android:textColor="#FFF"/>
+</RelativeLayout>

@@ -13,8 +13,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 
 import org.json.JSONObject;
 
@@ -26,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etUsername, etPassword;
     Button btnLogin;
     String URL = "http://10.0.2.2/StudentApp/login.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -36,13 +35,15 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin   = findViewById(R.id.btnLogin);
         Button btnTeacherLogin = findViewById(R.id.btnTeacherLogin);
+        Button btnRegisterRole = findViewById(R.id.btnRegisterRole);
 
         btnTeacherLogin.setOnClickListener(v -> {
-            startActivity(new Intent(this, TeacherLoginActivity.class)); // ✅ الصح
+            startActivity(new Intent(this, TeacherLoginActivity.class));
         });
 
-
-
+        btnRegisterRole.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegisterRoleActivity.class));
+        });
 
         btnLogin.setOnClickListener(view -> {
             String username = etUsername.getText().toString().trim();
@@ -64,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putInt("id", json.getInt("id"));
                                 editor.putString("name", json.getString("full_name"));
                                 editor.putString("major", json.getString("major"));
-                                editor.apply(); // احفظ التغييرات
+                                editor.apply();
 
                                 Toast.makeText(this, "Welcome " + json.getString("full_name"), Toast.LENGTH_LONG).show();
 
                                 String name = json.getString("full_name");
 
                                 startActivity(new Intent(this, StudentHomeActivity.class));
-                                finish(); // حتى ما يرجع لواجهة تسجيل الدخول لما يضغط back
+                                finish();
 
                             } else {
                                 Toast.makeText(this, json.getString("message"), Toast.LENGTH_SHORT).show();
@@ -96,6 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(stringRequest);
-  });
-}
+        });
+    }
 }

@@ -116,7 +116,7 @@ public class UploadAssignmentActivity extends AppCompatActivity {
     }
 
     private void uploadFileToServer(int studentId, String subjectId, String note, Uri fileUri) {
-        String uploadUrl = "http://10.0.2.2/student_api/upload_assignment.php";
+        String uploadUrl = "http://10.0.2.2/StudentApp/upload_assignment.php";
         try {
             InputStream iStream = getContentResolver().openInputStream(fileUri);
             byte[] inputData = new byte[iStream.available()];

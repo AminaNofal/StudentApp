@@ -35,6 +35,14 @@
         android:layout_marginTop="16dp"
         android:textColor="#ffffff"
         android:textAllCaps="false" />
+    <Button
+        android:id="@+id/btnRegisterRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="login as Register Role"
+        android:layout_marginTop="16dp"
 
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

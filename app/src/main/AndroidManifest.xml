@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.studentapp">
 
+    <!-- صلاحية الإنترنت -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,10 +18,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+        <!-- شاشة السبلاتش الرئيسية (النقطة الأولى للتشغيل) -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- باقي الأنشطة -->
+
         <activity android:name=".MarksActivity" />
-
         <activity android:name=".ScheduleActivity" />
-
         <activity android:name=".UploadAssignmentActivity" />
         <activity android:name=".TeacherLoginActivity" />
         <activity android:name=".TeacherHomeActivity" />
@@ -27,24 +39,21 @@
         <activity android:name=".TeacherMarksActivity" />
         <activity android:name=".TeacherAssignmentActivity" />
 
-
-
-
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".AddStudentActivity" />
+        <activity android:name=".AddCourseActivity" />
+        <activity android:name=".RegisterRoleActivity" />
+        <activity android:name=".MainMenuActivity" />
 
         <activity
             android:name=".StudentHomeActivity"
             android:exported="false"
             android:label="@string/title_activity_student_home"
             android:theme="@style/Theme.StudentApp" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/etCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Name"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/etCourseCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etCourseName"
+        android:layout_marginTop="16dp"
+        android:hint="Course Code"
+        android:inputType="text"/>
+
+    <Spinner
+        android:id="@+id/spDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etCourseCode"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAddCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spDepartment"
+        android:layout_marginTop="24dp"
+        android:text="Add Course"
+        android:backgroundTint="#6A1B9A"
+        android:textColor="#FFF"/>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAddCourse"
+        android:layout_marginTop="16dp"
+        android:text="Back"
+        android:backgroundTint="#6A1B9A"
+        android:textColor="#FFF"/>
+
+</RelativeLayout>
