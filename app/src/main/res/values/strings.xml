@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">StudentApp</string>
     <string name="title_activity_student_home">StudentHomeActivity</string>
+
+
+
+    <string-array name="report_type_options">
+        <item>Grades Report</item>
+        <item>Attendance Report</item>
+        <item>Behavior Report</item>
+    </string-array>
+
+    <string-array name="tag_filter_options">
+        <item>All</item>
+        <item>Important</item>
+        <item>Optional</item>
+    </string-array>
+
 </resources>

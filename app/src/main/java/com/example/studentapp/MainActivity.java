@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,35 +23,54 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
-    Button btnLogin;
+    Button btnLogin, btnLogout, btnTeacherLogin, btnRegisterRole;
+    TextView tvUserInfo;
+
+    // Server URL
     String URL = "http://10.0.2.2/StudentApp/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Bind views
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
-        btnLogin   = findViewById(R.id.btnLogin);
-        Button btnTeacherLogin = findViewById(R.id.btnTeacherLogin);
-        Button btnRegisterRole = findViewById(R.id.btnRegisterRole);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvUserInfo = findViewById(R.id.tvUserInfo);
+//        btnLogout = findViewById(R.id.btnLogout);
+        btnTeacherLogin = findViewById(R.id.btnTeacherLogin);
+        btnRegisterRole = findViewById(R.id.btnRegisterRole);
 
+        // Retrieve username from session
+        SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+        String sessionUsername = prefs.getString("username", "User unknown");
+        tvUserInfo.setText("Hello " + sessionUsername);
+
+        // Logout
+//        btnLogout.setOnClickListener(v -> {
+//            prefs.edit().clear().apply();
+//            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+//        });
+
+        // Teacher login
         btnTeacherLogin.setOnClickListener(v -> {
             startActivity(new Intent(this, TeacherLoginActivity.class));
         });
 
+        // Register new role
         btnRegisterRole.setOnClickListener(v -> {
             startActivity(new Intent(this, RegisterRoleActivity.class));
         });
 
+        // Student login
         btnLogin.setOnClickListener(view -> {
-            String username = etUsername.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
+            String usernameInput = etUsername.getText().toString().trim();
+            String passwordInput = etPassword.getText().toString().trim();
 
-            if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            if (usernameInput.isEmpty() || passwordInput.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -60,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject json = new JSONObject(response);
                             if (json.getString("status").equals("success")) {
 
+                                // Save student data to session
                                 SharedPreferences sp = getSharedPreferences("student_session", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putInt("id", json.getInt("id"));
@@ -68,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
                                 editor.apply();
 
                                 Toast.makeText(this, "Welcome " + json.getString("full_name"), Toast.LENGTH_LONG).show();
-
-                                String name = json.getString("full_name");
-
                                 startActivity(new Intent(this, StudentHomeActivity.class));
                                 finish();
 
@@ -79,18 +97,18 @@ public class MainActivity extends AppCompatActivity {
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Toast.makeText(this, "JSON Error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "JSON parsing error", Toast.LENGTH_SHORT).show();
                         }
                     },
                     error -> {
-                        Toast.makeText(this, "Volley error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Network error: " + error.getMessage(), Toast.LENGTH_LONG).show();
                     }
             ) {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
-                    params.put("username", username);
-                    params.put("password", password);
+                    params.put("username", usernameInput);
+                    params.put("password", passwordInput);
                     return params;
                 }
             };

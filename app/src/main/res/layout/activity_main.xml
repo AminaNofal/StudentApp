@@ -1,48 +1,72 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/etUsername"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:hint="Username" />
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_marginTop="16dp" />
+        <!-- TextView to display username -->
+        <TextView
+            android:id="@+id/tvUserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello User"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="24dp" />
-    <Button
-        android:id="@+id/btnTeacherLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login as Teacher"
-        android:layout_marginTop="16dp"
-        android:textColor="#ffffff"
-        android:textAllCaps="false" />
-    <Button
-        android:id="@+id/btnRegisterRole"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="login as Register Role"
-        android:layout_marginTop="16dp"
+        <!-- Username input field -->
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:minHeight="48dp" />
 
-        android:textColor="@android:color/white"
-        android:layout_gravity="center_horizontal"/>
+        <!-- Password input field -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:layout_marginTop="16dp" />
 
-</LinearLayout>
+        <!-- Student login button -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Login"
+            android:layout_marginTop="24dp" />
+
+        <!-- Teacher login button -->
+        <Button
+            android:id="@+id/btnTeacherLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teacher Login"
+            android:layout_marginTop="8dp" />
+
+        <!-- Register new account button -->
+        <Button
+            android:id="@+id/btnRegisterRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register Account"
+            android:layout_marginTop="8dp" />
+
+        <!-- Logout button -->
+<!--        <Button-->
+<!--            android:id="@+id/btnLogout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Logout"-->
+<!--            android:layout_marginTop="16dp" />-->
+    </LinearLayout>
+</ScrollView>

@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- شاشة السبلاتش الرئيسية (النقطة الأولى للتشغيل) -->
+        <!-- نقطة البداية -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -28,22 +28,19 @@
             </intent-filter>
         </activity>
 
-        <!-- باقي الأنشطة -->
-
-        <activity android:name=".MarksActivity" />
-        <activity android:name=".ScheduleActivity" />
-        <activity android:name=".UploadAssignmentActivity" />
-        <activity android:name=".TeacherLoginActivity" />
-        <activity android:name=".TeacherHomeActivity" />
-        <activity android:name=".TeacherScheduleActivity" />
-        <activity android:name=".TeacherMarksActivity" />
-        <activity android:name=".TeacherAssignmentActivity" />
-
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".AddStudentActivity" />
-        <activity android:name=".AddCourseActivity" />
-        <activity android:name=".RegisterRoleActivity" />
-        <activity android:name=".MainMenuActivity" />
+        <activity android:name=".MarksActivity" android:exported="false" />
+        <activity android:name=".ScheduleActivity" android:exported="false" />
+        <activity android:name=".UploadAssignmentActivity" android:exported="false" />
+        <activity android:name=".TeacherLoginActivity" android:exported="false" />
+        <activity android:name=".TeacherHomeActivity" android:exported="false" />
+        <activity android:name=".TeacherScheduleActivity" android:exported="false" />
+        <activity android:name=".TeacherMarksActivity" android:exported="false" />
+        <activity android:name=".TeacherAssignmentActivity" android:exported="false" />
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".AddStudentActivity" android:exported="false" />
+        <activity android:name=".AddCourseActivity" android:exported="false" />
+        <activity android:name=".RegisterRoleActivity" android:exported="false" />
+        <activity android:name=".MainMenuActivity" android:exported="false" />
 
         <activity
             android:name=".StudentHomeActivity"
@@ -54,6 +51,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
+        <activity android:name=".EditUserActivity" android:exported="false" />
+        <activity android:name=".GradesListActivity" android:exported="false" />
+        <activity android:name=".UsersListActivity" android:exported="false" />
+
     </application>
 
 </manifest>
