@@ -14,6 +14,7 @@ public class GradesListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private GradesAdapter adapter;
     private List<Grade> gradesList;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +28,13 @@ public class GradesListActivity extends AppCompatActivity {
         adapter = new GradesAdapter(gradesList);
         recyclerView.setAdapter(adapter);
 
+        dbHelper = new DatabaseHelper(this);
+
         loadGradesAsync();
     }
 
     private void loadGradesAsync() {
         new Thread(() -> {
-            DatabaseHelper dbHelper = new DatabaseHelper(this);
             List<Grade> grades = dbHelper.getAllGrades();
 
             runOnUiThread(() -> {
