@@ -25,7 +25,31 @@
         android:id="@+id/btnAddCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Add Course"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnEditUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Users"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnViewGrades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Grades"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnViewUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Users List"
         android:textSize="20sp"
         android:layout_marginBottom="16dp"/>
 

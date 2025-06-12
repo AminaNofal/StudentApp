@@ -2,10 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F5F6FA"
+    android:padding="16dp">
 
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Users"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#222"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="12dp"/>
+
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Search users..."
+        android:background="@drawable/search_edittext_bg"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Users List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"/>
+
 </LinearLayout>
