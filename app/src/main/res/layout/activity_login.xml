@@ -1,16 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- زر Registrar Login أول واحد -->
+    <Button
+        android:id="@+id/btnRegistrarLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Login"
+        android:backgroundTint="#7C4DFF"
+        android:textColor="#FFF"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp" />
+
+    <!-- اسم المستخدم تحت زر Registrar Login -->
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName"
+        android:layout_below="@id/btnRegistrarLogin"
+        android:layout_marginTop="8dp" />
 
+    <!-- كلمة السر تحت اسم المستخدم -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
@@ -18,8 +32,9 @@
         android:layout_below="@id/etUsername"
         android:layout_marginTop="16dp"
         android:hint="Password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword" />
 
+    <!-- زر تسجيل الدخول تحت كلمة السر -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
@@ -28,8 +43,9 @@
         android:layout_marginTop="24dp"
         android:text="Login"
         android:backgroundTint="#6A1B9A"
-        android:textColor="#FFF"/>
+        android:textColor="#FFF" />
 
+    <!-- زر الرجوع تحت زر تسجيل الدخول -->
     <Button
         android:id="@+id/btnBack"
         android:layout_width="match_parent"
@@ -38,7 +54,17 @@
         android:layout_marginTop="16dp"
         android:text="Back"
         android:backgroundTint="#6A1B9A"
-        android:textColor="#FFF"/>
+        android:textColor="#FFF" />
+
+    <!-- زر إنشاء حساب تحت زر الرجوع -->
+    <Button
+        android:id="@+id/btnRegisterRole"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnBack"
+        android:layout_marginTop="16dp"
+        android:text="Register Account"
+        android:backgroundTint="#7C4DFF"
+        android:textColor="#FFF" />
 
 </RelativeLayout>
-

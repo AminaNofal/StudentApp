@@ -2,6 +2,7 @@ package com.example.studentapp;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
     RecyclerView recyclerSchedule;
     List<Schedule> scheduleList;
-    String URL = "http://10.0.2.2/StudentApp/get_schedule.php"; // تأكد من المسار
+    String URL = "http://10.0.2.2/StudentApp/get_schedule.php"; // ✅ تم تصحيح المسار
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class ScheduleActivity extends AppCompatActivity {
         scheduleList = new ArrayList<>();
 
         SharedPreferences sp = getSharedPreferences("student_session", MODE_PRIVATE);
-        int studentId = sp.getInt("id", -1);
+        int studentId = sp.getInt("id", -1);  // ✅ يجب أن يكون هو users.id
 
         if (studentId == -1) {
             Toast.makeText(this, "Missing student session", Toast.LENGTH_SHORT).show();
@@ -48,6 +49,8 @@ public class ScheduleActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, URL,
                 response -> {
                     try {
+                        Log.d("ScheduleDebug", response);  // ✅ لعرض الاستجابة في Logcat
+
                         JSONObject json = new JSONObject(response);
                         if (json.getString("status").equals("success")) {
                             JSONArray data = json.getJSONArray("data");
@@ -70,12 +73,15 @@ public class ScheduleActivity extends AppCompatActivity {
                         Toast.makeText(this, "JSON Error", Toast.LENGTH_SHORT).show();
                     }
                 },
-                error -> Toast.makeText(this, "Volley Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
+                error -> {
+                    error.printStackTrace();
+                    Toast.makeText(this, "Volley Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                }
         ) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("student_id", String.valueOf(studentId));
+                params.put("student_id", String.valueOf(studentId)); // ✅ هذا يجب أن يكون من جدول users
                 return params;
             }
         };

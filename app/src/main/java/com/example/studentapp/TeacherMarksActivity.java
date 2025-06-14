@@ -3,6 +3,7 @@ package com.example.studentapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
@@ -56,6 +57,7 @@ public class TeacherMarksActivity extends AppCompatActivity {
     private void loadSubjects() {
         StringRequest request = new StringRequest(Request.Method.POST, GET_SUBJECTS_URL, response -> {
             try {
+                Log.d("SUBJECTS_RESPONSE", response);
                 JSONArray arr = new JSONArray(response);
                 List<String> subjectNames = new ArrayList<>();
 

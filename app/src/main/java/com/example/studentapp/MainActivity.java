@@ -23,7 +23,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
-    Button btnLogin, btnLogout, btnTeacherLogin, btnRegisterRole;
+    Button btnLogin, btnLogout, btnTeacherLogin, btnRegistrarLogin;
     TextView tvUserInfo;
 
     // Server URL
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         tvUserInfo = findViewById(R.id.tvUserInfo);
 //        btnLogout = findViewById(R.id.btnLogout);
         btnTeacherLogin = findViewById(R.id.btnTeacherLogin);
-        btnRegisterRole = findViewById(R.id.btnRegisterRole);
+        btnRegistrarLogin = findViewById(R.id.btnRegistrarLogin);
 
         // Retrieve username from session
         SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
@@ -60,10 +60,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Register new role
-        btnRegisterRole.setOnClickListener(v -> {
-            startActivity(new Intent(this, RegisterRoleActivity.class));
+        btnRegistrarLogin.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegistrarLoginActivity.class));
         });
-
         // Student login
         btnLogin.setOnClickListener(view -> {
             String usernameInput = etUsername.getText().toString().trim();

@@ -3,6 +3,8 @@ package com.example.studentapp;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,10 +24,9 @@ import java.net.URLEncoder;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
-    Button btnLogin, btnBack;
+    Button btnLogin, btnBack, btnRegistrarLogin, btnRegisterRole;
 
-    private static final String LOGIN_URL = "http://10.0.2.2:80/studentapp/login.php";
-
+    private static final String LOGIN_URL = "http://10.0.2.2/StudentApp/login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnBack = findViewById(R.id.btnBack);
+        btnRegistrarLogin = findViewById(R.id.btnRegistrarLogin);
+        btnRegisterRole = findViewById(R.id.btnRegisterRole);
+
         btnLogin.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
@@ -50,6 +54,17 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+        });
+
+        btnRegistrarLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegistrarLoginActivity.class);
+            startActivity(intent);
+        });
+
+        btnRegisterRole.setOnClickListener(v -> {
+            // Go to Register Account Activity
+            Intent intent = new Intent(LoginActivity.this, RegisterRoleActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -95,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            Log.d("LOGIN_RESPONSE", result);
             try {
                 JSONObject json = new JSONObject(result);
                 String status = json.getString("status");
@@ -118,10 +134,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e("JSON_ERROR", "Error parsing JSON: " + e.getMessage());
+                Log.e("JSON_RESULT", "Result was: " + result);
                 Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
             }
         }
     }
 }
-

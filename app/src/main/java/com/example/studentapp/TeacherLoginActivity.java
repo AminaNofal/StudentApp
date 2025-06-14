@@ -3,6 +3,7 @@ package com.example.studentapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
     Button btnLogin;
-    String URL = "http://10.0.2.2/StudentApp/login_teacher.php"; // تأكدي من اسم المسار
+    String URL = "http://10.0.2.2/StudentApp/login_teacher.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +36,11 @@ public class TeacherLoginActivity extends AppCompatActivity {
         Button btnBack = findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(view -> {
-            // رجوع إلى MainActivity (شاشة الطالب أو شاشة الاختيار)
             Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // يمسح الطبقات فوق MainActivity
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
         });
-
-
 
         btnLogin.setOnClickListener(v -> {
             String username = etUsername.getText().toString().trim();
@@ -55,12 +53,18 @@ public class TeacherLoginActivity extends AppCompatActivity {
 
             StringRequest request = new StringRequest(Request.Method.POST, URL, response -> {
                 try {
+                    Log.d("LOGIN_RESPONSE", response); // لمراقبة الرد من السيرفر
+
                     JSONObject obj = new JSONObject(response);
                     if (obj.getString("status").equals("success")) {
+                        JSONObject teacher = obj.getJSONObject("teacher");
+
                         SharedPreferences prefs = getSharedPreferences("teacher", MODE_PRIVATE);
                         SharedPreferences.Editor editor = prefs.edit();
-                        editor.putInt("id", obj.getInt("id"));
-                        editor.putString("name", obj.getString("full_name"));
+                        editor.putInt("id", teacher.getInt("id"));
+                        editor.putString("username", teacher.getString("username"));
+                        editor.putString("name", teacher.getString("full_name"));
+                        editor.putString("major", teacher.getString("major"));
                         editor.apply();
 
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
@@ -71,7 +75,7 @@ public class TeacherLoginActivity extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error parsing response", Toast.LENGTH_LONG).show();
                 }
             }, error -> {
                 error.printStackTrace();
@@ -90,4 +94,3 @@ public class TeacherLoginActivity extends AppCompatActivity {
         });
     }
 }
-

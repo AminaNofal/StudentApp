@@ -38,9 +38,11 @@
         <activity android:name=".TeacherMarksActivity" android:exported="false" />
         <activity android:name=".TeacherAssignmentActivity" android:exported="false" />
         <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".RegistrarLoginActivity" android:exported="false" />
         <activity android:name=".AddStudentActivity" android:exported="false" />
-        <activity android:name=".AddCourseActivity" android:exported="false" />
+        <activity android:name=".ui.AddCourseActivity" android:exported="false" />
         <activity android:name=".RegisterRoleActivity" android:exported="false" />
+        <activity android:name=".RegisterOptionsActivity" android:exported="false" />
         <activity android:name=".MainMenuActivity" android:exported="false" />
 
         <activity

@@ -77,7 +77,7 @@ public class AddStudentActivity extends AppCompatActivity {
         });
 
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(AddStudentActivity.this, MainMenuActivity.class);
+            Intent intent = new Intent(AddStudentActivity.this, RegisterOptionsActivity.class);
             startActivity(intent);
             finish();
         });

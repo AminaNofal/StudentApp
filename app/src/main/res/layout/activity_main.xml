@@ -55,18 +55,15 @@
 
         <!-- Register new account button -->
         <Button
-            android:id="@+id/btnRegisterRole"
+            android:id="@+id/btnRegistrarLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register Account"
             android:layout_marginTop="8dp" />
 
-        <!-- Logout button -->
-<!--        <Button-->
-<!--            android:id="@+id/btnLogout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Logout"-->
-<!--            android:layout_marginTop="16dp" />-->
+
+
+
+
     </LinearLayout>
 </ScrollView>

@@ -28,7 +28,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AddStudentActivity.class)));
 
         btnAddCourse.setOnClickListener(v ->
-                startActivity(new Intent(this, AddCourseActivity.class)));
+                startActivity(new Intent(this, com.example.studentapp.ui.AddCourseActivity.class)));
 
         btnEditUsers.setOnClickListener(v ->
                 startActivity(new Intent(this, EditUserActivity.class)));

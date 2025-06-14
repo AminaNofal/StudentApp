@@ -2,6 +2,7 @@ package com.example.studentapp;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -30,14 +31,13 @@ public class TeacherScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_schedule);
-        Button btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> {
-            finish(); // أو startActivity(new Intent(this, TeacherHomeActivity.class));
-        });
 
+        Button btnBack = findViewById(R.id.btnBack);
         recyclerView = findViewById(R.id.recyclerViewSchedule);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         scheduleList = new ArrayList<>();
+
+        btnBack.setOnClickListener(v -> finish());
 
         // استرجاع id المعلم من SharedPreferences
         SharedPreferences sp = getSharedPreferences("teacher", MODE_PRIVATE);
@@ -49,13 +49,15 @@ public class TeacherScheduleActivity extends AppCompatActivity {
             return;
         }
 
-        // الطلب من السيرفر
+        // إرسال الطلب للسيرفر
         StringRequest request = new StringRequest(Request.Method.POST, URL, response -> {
             try {
+                Log.d("SCHEDULE_RESPONSE", response); // لمراقبة الرد
+
                 JSONObject jsonObject = new JSONObject(response);
 
                 if (jsonObject.getString("status").equals("success")) {
-                    JSONArray arr = jsonObject.getJSONArray("data");
+                    JSONArray arr = jsonObject.getJSONArray("schedule"); // <== تم التعديل هنا
 
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
@@ -77,11 +79,11 @@ public class TeacherScheduleActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(this, "Error parsing data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error parsing data", Toast.LENGTH_LONG).show();
             }
         }, error -> {
             error.printStackTrace();
-            Toast.makeText(this, "Volley Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Volley Error: " + error.toString(), Toast.LENGTH_LONG).show();
         }) {
             @Override
             protected java.util.Map<String, String> getParams() {
@@ -90,7 +92,6 @@ public class TeacherScheduleActivity extends AppCompatActivity {
                 return params;
             }
         };
-
 
         Volley.newRequestQueue(this).add(request);
     }

@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME));
                 String email = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL));
 
-                userList.add(new User(id, name, email));
+                userList.add(new User(id, name));
             } while (cursor.moveToNext());
         }
         cursor.close();
