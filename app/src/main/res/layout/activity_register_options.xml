@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center" android:padding="24dp">
+
+    <Button
+        android:id="@+id/btnEditUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit User" />
+
+    <Button
+        android:id="@+id/btnUsersList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Users List"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnGradesList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grades List"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAddStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Student"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnAddCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Course"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
